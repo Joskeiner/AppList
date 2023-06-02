@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-
+import {SharedModule} from 'src/app/shared/shared.module'
+import {DbMovieService}from '../services/db-movie.service'
+import { Share } from '@capacitor/share';
 
 
 @Component({
@@ -12,10 +13,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
   standalone: true,
-  providers:[
-
-  ],
-  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule]
+  imports: [IonicModule, CommonModule, FormsModule , SharedModule]
 })
 export class ProfilePage implements OnInit {
 
@@ -23,16 +21,27 @@ export class ProfilePage implements OnInit {
   movie:any;
   constructor(
     private activate:ActivatedRoute, 
-    private http:HttpClient
+    private ApiMovieService : DbMovieService
     ) { }
 
   ngOnInit() {
+
     this.profileId = this.activate.snapshot.paramMap.get('id');
-    this.http.get('https://api.themoviedb.org/3/movie/'+this.profileId+'?api_key=f94aa13f0bf3664d4f542fa08948a210&language=en-US')
+   this.ApiMovieService.ViewProfile(this.profileId)
     .subscribe(res=>{
       this.movie = res;
       console.log(res);
     })
+
+  }
+
+  SheredSocial(){
+
+    Share.share({
+      title: 'Recomendacion de pelicula ',
+      text: 'Mira esta pelicula ',
+      url: this.movie.homepage,
+    });
   }
 
  

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule,FormGroup,FormControl,Validator,FormBuilder, Validators } from '@angular/forms';
 import { AlertController, IonicModule, NavController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,7 +13,7 @@ import { AlertController, IonicModule, NavController } from '@ionic/angular';
     IonicModule, 
     CommonModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class LoginPage implements OnInit {

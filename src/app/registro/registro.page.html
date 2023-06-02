@@ -1,25 +1,22 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Registro</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 <ion-content>
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Registro</ion-card-title>
+  <h1> PeliApp </h1>
+<ion-card class=" Registro">
+  <ion-card-header class=" Registro">
+    <ion-card-title class="text-center" >Registro</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <form [formGroup]="formularioRegistro" > <!--(keyup.enter)="guardar()"-->
+    <form [formGroup]="formularioRegistro" class="ion-text-center"> <!--(keyup.enter)="guardar()"-->
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
+        <ion-label position="floating" >Nombre</ion-label>
         <ion-input formControlName="nombre"></ion-input>
       </ion-item>
-
       <ion-item>
-        <ion-label position="floating">Conraseña</ion-label>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label icon="lock-closed-outline" position="floating" >Conraseña</ion-label>
         <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
       <br>

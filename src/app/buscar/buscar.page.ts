@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { CarteleraResponse } from '../interface/cartelera_response';
-import { HttpClient,HttpClientModule } from "@angular/common/http";
+import { SharedModule } from '../shared/shared.module';
+import { DbMovieService } from '../services/db-movie.service'; 
+
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.page.html',
   styleUrls: ['./buscar.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule,HttpClientModule]
+  imports: [IonicModule, CommonModule, FormsModule, SharedModule]
 })
 export class BuscarPage implements OnInit {
  
   peliculas: any;
-  constructor(private http:HttpClient) { }
+  constructor(
+    private ApiMovieService:DbMovieService
+  ) { }
 
   ngOnInit() {
   }
@@ -24,14 +27,27 @@ export class BuscarPage implements OnInit {
     if(texto.length === 0){
       return;
     }
-    this.http.get<CarteleraResponse>('https://api.themoviedb.org/3/search/movie?api_key=f94aa13f0bf3664d4f542fa08948a210&language=en-US&query='+texto+'&page=1&include_adult=false')
+
+    this.ApiMovieService.SearchForId(texto)
     .subscribe((data: any)=>{
-      console.log(data);
+      //console.log(data);
       this.peliculas=data.results;
       const miCampo = document.getElementById("miCampo") as HTMLInputElement;
     miCampo.value = "";
     })
-    console.log(texto);
+    //console.log(texto);
   }
 
 }
+
+
+
+
+//this.http.get<CarteleraResponse>('https://api.themoviedb.org/3/search/movie?api_key=f94aa13f0bf3664d4f542fa08948a210&language=en-US&query='+texto+'&page=1&include_adult=false')
+    // .subscribe((data: any)=>{
+    //   console.log(data);
+    //   this.peliculas=data.results;
+    //   const miCampo = document.getElementById("miCampo") as HTMLInputElement;
+    // miCampo.value = "";
+    // })
+    // console.log(texto);

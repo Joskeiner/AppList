@@ -30,11 +30,11 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./login/login.page').then( m => m.LoginPage),
-    canActivate:[NoIngresadoGuard]
+    //canActivate:[NoIngresadoGuard]
   },
   {
     path: 'registro',
     loadComponent: () => import('./registro/registro.page').then( m => m.RegistroPage),
-    canActivate:[NoIngresadoGuard]
+    //canActivate:[NoIngresadoGuard]
   },
 ];

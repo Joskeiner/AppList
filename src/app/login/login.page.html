@@ -1,40 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
- <ion-card>
-  <ion-card-header>
-    <ion-card-title class="text-center">formulario Login</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <form [formGroup]="formularioLogin">
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input formControlName="nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input formControlName="password" type="password"></ion-input>
-      </ion-item>
-      <br>
-     <ion-button (click)="ingresar()"> <!---->
-      Ingresar
-     </ion-button>
-     </form>
-     
-  </ion-card-content>
- </ion-card>
- <br>
- <ion-footer>
-  <ion-toolbar >
-    <ion-buttons slot="end">
-      <ion-button href='/registro'>Registrarse</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
+
+<ion-content >
+
+          <h1> PeliApp </h1>
+  <div >
+        <ion-card class="d-flex-center centro ">
+      <ion-card-header>
+        <ion-card-title class="text-center">formulario Login</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content >
+        <form [formGroup]="formularioLogin" class="ion-text-center">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input formControlName="nombre"></ion-input>
+          </ion-item>
+          <ion-item icon="lock-closed-outline">
+            <ion-label position="floating" >Password</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+          </ion-item>
+          <br>
+        <ion-button class="ion-margin-vertical" shape="round" (click)="ingresar()"> <!---->
+          Ingresar
+          <ion-icon slot="end" name="log-in-outline"></ion-icon>
+        </ion-button>
+        </form>
+      
+      </ion-card-content>
+    </ion-card>
+  </div>
+    <br>
+    <div class="centro  ion-text-center">
+            
+                <div><p>No tienes cuenta ?</p></div>
+                <ion-button  class="ion-margin-vertical ion-text-center " color="tertiary" shape="round"  href='/registro'>
+                  Registrarse
+                  <ion-icon slot="end" name="person-add-outline"></ion-icon>
+                </ion-button>
+    </div>
+    
+  
+ 
 </ion-content>
 
 
